@@ -16,6 +16,7 @@ function Home() {
             <p>{`TODO 앱을 사용하려면 "TODO" 메뉴를 클릭하세요.`}</p>
             <p> .env 테스트 {import.meta.env.VITE_API_BASE_URL}</p>
             {message && <p>{message}</p>} {/* Express에서 받은 메시지 출력 */}
+            <p> 빌드 버전 0.1</p>
         </div>
     );
 }
