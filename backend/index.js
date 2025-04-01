@@ -19,15 +19,13 @@ app.use(morgan("dev"));
 app.use("/api/todos", todoRoutes);
 app.use("/api/users", userRoutes);
 
-// 기본 페이지
+// ✅ 기본 페이지
 app.get("/", (req, res) => {
-    res.json({ message: "Hello from Express!, connection successful! " });
+    res.json({ message: "Hello from Express!" });
 });
 
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-        console.log(`✅ Server running on http://localhost:${PORT}`);
-    });
-
-
-export default app;
+// 포트 설정 (환경변수 또는 기본값 5000)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`✅ Server running on http://localhost:${PORT}`);
+});
