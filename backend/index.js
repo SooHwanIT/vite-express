@@ -12,17 +12,16 @@ dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-//CORS 에러를 위한 해결
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173", // 프론트엔드 주소 (Vite 기본 포트)
+        origin: process.env.API_BASE_URL, // .env에서 가져온 API 주소 사용
         methods: ["GET", "POST"]
     }
 });
 
 app.use(cors({
-    origin: "http://localhost:5173", // 프론트엔드 주소
-    credentials: true // 인증 정보 포함 허용 (필요하면 추가)
+    origin: process.env.API_BASE_URL, // .env에서 가져온 API 주소 사용
+    credentials: true
 }));
 app.use(express.json());
 app.use(morgan("dev"));
