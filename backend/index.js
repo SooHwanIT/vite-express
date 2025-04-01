@@ -30,8 +30,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello from Express!, connection successful! " });
 });
 
-app.get("/api", (req, res) => {
-    res.json({ message: "api connection successful! " });
+app.get("/api/hello", (req, res) => {
+    res.json({ message: "api connection successful! hello!! " });
 });
 
 // 로컬 개발용: Vercel 배포 시에는 실행되지 않음
