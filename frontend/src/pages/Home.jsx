@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
 // .env 파일에서 Socket 서버 URL 가져오기
-const socket = io(import.meta.env.API_BASE_URL);
+const socket = io(import.meta.env.VITE_API_BASE_URL);
 
 function Home() {
     const [helloMessage, setHelloMessage] = useState("");
@@ -25,7 +25,7 @@ function Home() {
         <div className="container">
             <h1>홈 페이지</h1>
             <p>{`TODO 앱을 사용하려면 "TODO" 메뉴를 클릭하세요.`}</p>
-            <p> .env 테스트 {import.meta.env.API_BASE_URL}</p>
+            <p> .env 테스트 {import.meta.env.VITE_API_BASE_URL}</p>
             {helloMessage && <p>{helloMessage}</p>} {/* "헬로" 메시지 출력 */}
         </div>
     );

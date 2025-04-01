@@ -4,16 +4,19 @@ function Todo() {
     const [todos, setTodos] = useState([]);
     const [text, setText] = useState("");
 
+    // API 기본 URL을 .env 파일에서 가져옴
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
     useEffect(() => {
-        fetch("http://localhost:5000/api/todos")
+        fetch(`${apiBaseUrl}/api/todos`)
             .then((res) => res.json())
             .then((data) => setTodos(data))
             .catch((err) => console.error("Error:", err));
-    }, []);
+    }, [apiBaseUrl]);
 
     const addTodo = () => {
         if (!text.trim()) return;
-        fetch("http://localhost:5000/api/todos", {
+        fetch(`${apiBaseUrl}/api/todos`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ text }),
@@ -22,12 +25,14 @@ function Todo() {
             .then((newTodo) => {
                 setTodos([...todos, newTodo]);
                 setText("");
-            });
+            })
+            .catch((err) => console.error("Error:", err));
     };
 
     const deleteTodo = (id) => {
-        fetch(`http://localhost:5000/api/todos/${id}`, { method: "DELETE" })
-            .then(() => setTodos(todos.filter((todo) => todo.id !== id)));
+        fetch(`${apiBaseUrl}/api/todos/${id}`, { method: "DELETE" })
+            .then(() => setTodos(todos.filter((todo) => todo.id !== id)))
+            .catch((err) => console.error("Error:", err));
     };
 
     return (
