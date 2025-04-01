@@ -21,7 +21,7 @@ app.use("/api/users", userRoutes);
 
 // ✅ 기본 페이지
 app.get("/", (req, res) => {
-    res.json({ message: "Hello from Express!" });
+    res.json({ message: "Hello from Express!, connection successful! " });
 });
 
 // 포트 설정 (환경변수 또는 기본값 5000)
