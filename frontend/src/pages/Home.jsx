@@ -4,7 +4,7 @@ function Home() {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_BASE_URL)  // 백엔드 기본 주소로 요청
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api`)  // 백엔드 기본 주소로 요청
             .then((res) => res.json())
             .then((data) => setMessage(data.message))  // JSON 데이터의 message 필드 사용
             .catch((err) => console.error("Error:", err));
