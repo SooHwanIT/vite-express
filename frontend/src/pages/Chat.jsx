@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000"); // 서버와 연결
+// .env 파일에서 Socket 서버 URL 가져오기
+const socket = io(import.meta.env.API_BASE_URL);
 
 function Chat() {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
 
-    // 서버로부터 메시지 수신
+    // 서버로부터 채팅 메시지 수신
     useEffect(() => {
         socket.on("chatMessage", (msg) => {
             setMessages((prevMessages) => [...prevMessages, msg]);
