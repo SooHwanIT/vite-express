@@ -14,13 +14,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.API_BASE_URL, // .env에서 가져온 API 주소 사용
+        origin: process.env.FRONT_BASE_URL, // .env에서 가져온 API 주소 사용
         methods: ["GET", "POST"]
     }
 });
 
 app.use(cors({
-    origin: process.env.API_BASE_URL, // .env에서 가져온 API 주소 사용
+    origin: process.env.FRONT_BASE_URL, // .env에서 가져온 API 주소 사용
     credentials: true
 }));
 app.use(express.json());

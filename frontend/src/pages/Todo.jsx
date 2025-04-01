@@ -32,7 +32,7 @@ function Todo() {
 
     return (
         <div className="container">
-            <h1>TODO 리스트</h1>
+            <h1>{`TODO 리스트`}</h1>
             <div className="input-group">
                 <input
                     type="text"
